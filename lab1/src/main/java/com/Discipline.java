@@ -1,0 +1,59 @@
+package com;
+
+import java.util.*;
+
+class Discipline
+{
+    private String name;
+    private List<Integer> grades = new ArrayList<>();
+
+    public Discipline(String name)
+    {
+        this.name = name;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public List<Integer> getGrades()
+    {
+        return grades;
+    }
+
+    public void setGrades(List<Integer> grades)
+    {
+        this.grades = grades;
+    }
+
+    public void addGrade(int grade)
+    {
+        if (grade < 1 || grade > 12) throw new IllegalArgumentException("Invalid grade");
+        grades.add(grade);
+    }
+
+    public double averageGrade()
+    {
+        return grades.isEmpty() ? 0 : grades.stream().mapToInt(i -> i).average().orElse(0);
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (!(o instanceof Discipline that)) return false;
+        return Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(name);
+    }
+}
