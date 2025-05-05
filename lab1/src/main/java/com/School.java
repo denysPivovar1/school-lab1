@@ -43,18 +43,25 @@ class School
         return sum / students.size();
     }
 
-    public void displayAllStudentInfo() {
-        if (students.isEmpty()) {
+    public void displayAllStudentInfo()
+    {
+        if (students.isEmpty())
+        {
             System.out.println("No students found");
             return;
         }
-        for (Student student : students) {
+
+        for (Student student : students)
+        {
             System.out.println("Student: " + student.getName());
-            if (student.getDisciplines().isEmpty()) {
+            if (student.getDisciplines().isEmpty())
+            {
                 System.out.println("No Disciplines");
                 continue;
             }
-            for (Discipline d : student.getDisciplines()) {
+
+            for (Discipline d : student.getDisciplines())
+            {
                 System.out.println("Discipline: " + d.getName() + ", grades: " + d.getGrades() + ", GPA: " + d.averageGrade());
             }
         }

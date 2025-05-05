@@ -41,21 +41,29 @@ class Student
     {
         if (disciplines.isEmpty()) return 0;
         double sum = 0;
-        for (Discipline d : disciplines) {
+        for (Discipline d : disciplines)
+        {
             sum += d.averageGrade();
         }
         return sum / disciplines.size();
     }
 
-    public Discipline getOrCreateDiscipline(String discName)
+    public boolean CheckIfContains(String name)
     {
-        for (Discipline d : disciplines)
+        for (Discipline d: disciplines)
         {
-            if (d.getName().equalsIgnoreCase(discName)) return d;
+            if (d.getName().equals(name)) return true;
         }
-        Discipline newDisc = new Discipline(discName);
-        disciplines.add(newDisc);
-        return newDisc;
+        return false;
+    }
+
+    public Discipline GetDisciplineOfStudent(String name)
+    {
+        for (Discipline d: disciplines)
+        {
+            if (d.getName().equals(name)) return d;
+        }
+        return null;
     }
 
     @Override

@@ -10,6 +10,7 @@ public class Main
 
     public static void main(String[] args)
     {
+        //console menu
         boolean running = true;
         while (running)
         {
@@ -60,7 +61,7 @@ public class Main
     private static void addDisciplineToStudent()
     {
         System.out.print("Enter student's name: ");
-        String name = scanner.nextLine();
+        String name = scanner.nextLine().toLowerCase();
         Student student = school.getStudentByName(name);
 
         if (student == null)
@@ -71,8 +72,16 @@ public class Main
 
         System.out.print("Enter discipline name: ");
         String disc = scanner.nextLine();
-        Discipline d = new Discipline(disc);
-        student.addDiscipline(d);
+
+        if (student.CheckIfContains(disc))
+        {
+            System.out.println("Discipline already exists");
+        }
+        else
+        {
+            Discipline d = new Discipline(disc);
+            student.addDiscipline(d);
+        }
     }
 
     private static void showStudentPerformance()
@@ -95,8 +104,9 @@ public class Main
 
     private static void takeTest()
     {
+        Discipline d;
         System.out.print("Enter student's name: ");
-        String name = scanner.nextLine();
+        String name = scanner.nextLine().toLowerCase();
         Student student = school.getStudentByName(name);
 
         if (student == null)
@@ -106,12 +116,21 @@ public class Main
         }
 
         System.out.print("Enter discipline name: ");
-        String discName = scanner.nextLine();
-        Discipline discipline = student.getOrCreateDiscipline(discName);
+        String disc = scanner.nextLine().toLowerCase();
+
+        if (!student.CheckIfContains(disc))
+        {
+            d = new Discipline(disc);
+            student.addDiscipline(d);
+        }
+        else
+        {
+            d = student.GetDisciplineOfStudent(disc);
+        }
 
         System.out.print("Enter test grade: (1–12): ");
         int grade = Integer.parseInt(scanner.nextLine());
-        discipline.addGrade(grade);
+        d.addGrade(grade);
         System.out.println("Grade was added");
     }
 
