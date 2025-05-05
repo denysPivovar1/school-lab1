@@ -47,8 +47,10 @@ class Student
         return sum / disciplines.size();
     }
 
-    public Discipline getOrCreateDiscipline(String discName) {
-        for (Discipline d : disciplines) {
+    public Discipline getOrCreateDiscipline(String discName)
+    {
+        for (Discipline d : disciplines)
+        {
             if (d.getName().equalsIgnoreCase(discName)) return d;
         }
         Discipline newDisc = new Discipline(discName);
