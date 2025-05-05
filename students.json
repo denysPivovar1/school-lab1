@@ -1,0 +1,25 @@
+[ {
+  "name" : "Bob",
+  "disciplines" : [ {
+    "name" : "english",
+    "grades" : [ 11 ]
+  }, {
+    "name" : "history",
+    "grades" : [ 10, 12 ]
+  } ]
+}, {
+  "name" : "Nancy",
+  "disciplines" : [ {
+    "name" : "maths",
+    "grades" : [ 9, 12 ]
+  } ]
+}, {
+  "name" : "Dan",
+  "disciplines" : [ {
+    "name" : "physics",
+    "grades" : [ 9, 10 ]
+  }, {
+    "name" : "biology",
+    "grades" : [ 7 ]
+  } ]
+} ]

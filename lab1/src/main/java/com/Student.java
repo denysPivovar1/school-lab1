@@ -1,5 +1,7 @@
 package com;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.*;
 
 class Student
@@ -7,11 +9,14 @@ class Student
     private String name;
     private List<Discipline> disciplines = new ArrayList<>();
 
+    public Student() {}
+
     public Student(String name)
     {
         this.name = name;
     }
 
+    @JsonProperty("name")
     public String getName()
     {
         return name;
@@ -22,6 +27,7 @@ class Student
         this.name = name;
     }
 
+    @JsonProperty("disciplines")
     public List<Discipline> getDisciplines()
     {
         return disciplines;
@@ -35,6 +41,11 @@ class Student
     public void addDiscipline(Discipline d)
     {
         disciplines.add(d);
+    }
+
+    public void removeDiscipline(Discipline d)
+    {
+        disciplines.remove(d);
     }
 
     public double calculateAverageGrade()

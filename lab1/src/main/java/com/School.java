@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.*;
 
 class School
 {
-    private List<Student> students = new ArrayList<>();
+    private final List<Student> students = new ArrayList<>();
 
     public List<Student> getStudents()
     {

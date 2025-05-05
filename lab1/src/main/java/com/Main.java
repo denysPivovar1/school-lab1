@@ -10,12 +10,12 @@ public class Main
 
     public static void main(String[] args)
     {
-        //console menu
+        //Сonsole menu
         boolean running = true;
         while (running)
         {
             System.out.println();
-            System.out.println("==== МЕНЮ ====");
+            System.out.println("----- MENU -----");
             System.out.println("0. Exit");
             System.out.println("1. Add student");
             System.out.println("2. Add student's discipline");
@@ -56,6 +56,7 @@ public class Main
         System.out.print("Enter student's name: ");
         String name = scanner.nextLine();
         school.addStudent(new Student(name));
+        System.out.println("Student added!");
     }
 
     private static void addDisciplineToStudent()
@@ -71,7 +72,7 @@ public class Main
         }
 
         System.out.print("Enter discipline name: ");
-        String disc = scanner.nextLine();
+        String disc = scanner.nextLine().toLowerCase();
 
         if (student.CheckIfContains(disc))
         {
@@ -81,6 +82,7 @@ public class Main
         {
             Discipline d = new Discipline(disc);
             student.addDiscipline(d);
+            System.out.println("Discipline added!");
         }
     }
 
@@ -117,7 +119,6 @@ public class Main
 
         System.out.print("Enter discipline name: ");
         String disc = scanner.nextLine().toLowerCase();
-
         if (!student.CheckIfContains(disc))
         {
             d = new Discipline(disc);
@@ -136,17 +137,13 @@ public class Main
 
     private static void exportData() throws IOException
     {
-        System.out.print("File for export (for example: school.json): ");
-        String filename = scanner.nextLine();
-        school.exportToJson(filename);
+        school.exportToJson("students.json");
         System.out.println("Export completed!");
     }
 
     private static void importData() throws IOException
     {
-        System.out.print("File for import (for example: school.json): ");
-        String filename = scanner.nextLine();
-        school.importFromJson(filename);
+        school.importFromJson("students.json");
         System.out.println("Import completed!");
     }
 }

@@ -1,5 +1,8 @@
 package com;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.*;
 
 class Discipline
@@ -7,11 +10,15 @@ class Discipline
     private String name;
     private List<Integer> grades = new ArrayList<>();
 
+    @JsonCreator
+    public Discipline() {}
+
     public Discipline(String name)
     {
         this.name = name;
     }
 
+    @JsonProperty("name")
     public String getName()
     {
         return name;
@@ -22,6 +29,7 @@ class Discipline
         this.name = name;
     }
 
+    @JsonProperty("grades")
     public List<Integer> getGrades()
     {
         return grades;
