@@ -1,8 +1,14 @@
 Student: Bob
-Discipline: english, Grades: [11], GPA: 11,00Discipline: history, Grades: [10, 12], GPA: 11,00
+Discipline: english, Grades: [11], GPA: 11,00
+Discipline: history, Grades: [10, 12], GPA: 11,00
+
 Student: Steve
 Discipline: astronomy, Grades: [11], GPA: 11,00
+
 Student: Nancy
 Discipline: maths, Grades: [9, 12], GPA: 10,50
+
 Student: Dan
-Discipline: physics, Grades: [9, 10], GPA: 9,50Discipline: biology, Grades: [7], GPA: 7,00
+Discipline: physics, Grades: [9, 10], GPA: 9,50
+Discipline: biology, Grades: [7], GPA: 7,00
+

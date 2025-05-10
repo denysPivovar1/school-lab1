@@ -2,7 +2,6 @@ package com;
 
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.List;
 import java.io.*;
 
@@ -47,7 +46,7 @@ class SchoolTest
         assertEquals(1, newSchool.getStudents().size());
         assertEquals("Test", newSchool.getStudents().get(0).getName());
 
-        new File(filename).delete(); // clean up
+        new File(filename).delete();
     }
 
     @Test

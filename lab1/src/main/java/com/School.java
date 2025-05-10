@@ -189,7 +189,7 @@ class School
                 {
                     for (Discipline d : s.getDisciplines())
                     {
-                        writer.write(String.format("Discipline: %s, Grades: %s, GPA: %.2f", d.getName(), d.getGrades(), d.averageGrade()));
+                        writer.write(String.format("Discipline: %s, Grades: %s, GPA: %.2f\n", d.getName(), d.getGrades(), d.averageGrade()));
                     }
                 }
                 writer.newLine();
