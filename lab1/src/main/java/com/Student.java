@@ -1,7 +1,6 @@
 package com;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.*;
 
 class Student
@@ -63,7 +62,7 @@ class Student
     {
         for (Discipline d: disciplines)
         {
-            if (d.getName().equals(name)) return true;
+            if (d.getName().equalsIgnoreCase(name)) return true;
         }
         return false;
     }
@@ -72,7 +71,7 @@ class Student
     {
         for (Discipline d: disciplines)
         {
-            if (d.getName().equals(name)) return d;
+            if (d.getName().equalsIgnoreCase(name)) return d;
         }
         return null;
     }
@@ -80,14 +79,14 @@ class Student
     @Override
     public boolean equals(Object o)
     {
-        if (this == o) return true;
-        if (!(o instanceof Student student)) return false;
-        return Objects.equals(name, student.name);
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return Objects.equals(name, student.name) && Objects.equals(disciplines, student.disciplines);
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(name);
+        return Objects.hash(name, disciplines);
     }
 }

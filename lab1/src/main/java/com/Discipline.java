@@ -42,7 +42,7 @@ class Discipline
 
     public void addGrade(int grade)
     {
-        if (grade < 1 || grade > 12) throw new IllegalArgumentException("Invalid grade");
+        if (grade < 1 || grade > 12) throw new IllegalArgumentException("Wrong input");
         grades.add(grade);
     }
 
@@ -54,14 +54,14 @@ class Discipline
     @Override
     public boolean equals(Object o)
     {
-        if (this == o) return true;
-        if (!(o instanceof Discipline that)) return false;
-        return Objects.equals(name, that.name);
+        if (o == null || getClass() != o.getClass()) return false;
+        Discipline that = (Discipline) o;
+        return Objects.equals(name, that.name) && Objects.equals(grades, that.grades);
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(name);
+        return Objects.hash(name, grades);
     }
 }

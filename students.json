@@ -8,6 +8,12 @@
     "grades" : [ 10, 12 ]
   } ]
 }, {
+  "name" : "Steve",
+  "disciplines" : [ {
+    "name" : "astronomy",
+    "grades" : [ 11 ]
+  } ]
+}, {
   "name" : "Nancy",
   "disciplines" : [ {
     "name" : "maths",

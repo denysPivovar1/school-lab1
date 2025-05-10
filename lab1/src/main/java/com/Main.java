@@ -10,7 +10,6 @@ public class Main
 
     public static void main(String[] args)
     {
-        //Сonsole menu
         boolean running = true;
         while (running)
         {
@@ -23,8 +22,8 @@ public class Main
             System.out.println("4. Show school's performance");
             System.out.println("5. Make student take a test");
             System.out.println("6. Show student's information");
-            System.out.println("7. Export to JSON");
-            System.out.println("8. Import from JSON");
+            System.out.println("7. Export data");
+            System.out.println("8. Import data");
             System.out.print("Select an option: ");
             String choice = scanner.nextLine();
 
@@ -41,7 +40,7 @@ public class Main
                     case "6" -> school.displayAllStudentInfo();
                     case "7" -> exportData();
                     case "8" -> importData();
-                    default -> System.out.println("Wrong option");
+                    default -> System.out.println("Wrong input");
                 }
             }
             catch (Exception e)
@@ -56,7 +55,7 @@ public class Main
         System.out.print("Enter student's name: ");
         String name = scanner.nextLine();
         school.addStudent(new Student(name));
-        System.out.println("Student added!");
+        System.out.println("Success!");
     }
 
     private static void addDisciplineToStudent()
@@ -67,33 +66,32 @@ public class Main
 
         if (student == null)
         {
-            System.out.println("Student is not found");
+            System.out.println("Student wasn't found");
             return;
         }
 
-        System.out.print("Enter discipline name: ");
+        System.out.print("Enter discipline's name: ");
         String disc = scanner.nextLine().toLowerCase();
 
         if (student.CheckIfContains(disc))
         {
             System.out.println("Discipline already exists");
+            return;
         }
-        else
-        {
             Discipline d = new Discipline(disc);
             student.addDiscipline(d);
-            System.out.println("Discipline added!");
-        }
+            System.out.println("Success!");
     }
 
     private static void showStudentPerformance()
     {
         System.out.print("Enter student's name: ");
-        String name = scanner.nextLine();
+        String name = scanner.nextLine().toLowerCase();
         Student student = school.getStudentByName(name);
+
         if (student == null)
         {
-            System.out.println("Student is not found");
+            System.out.println("Student wasn't found");
             return;
         }
         System.out.println("GPA: " + student.calculateAverageGrade());
@@ -113,37 +111,56 @@ public class Main
 
         if (student == null)
         {
-            System.out.println("Student is not found");
+            System.out.println("Student was not found");
             return;
         }
 
-        System.out.print("Enter discipline name: ");
+        System.out.print("Enter discipline's name: ");
         String disc = scanner.nextLine().toLowerCase();
-        if (!student.CheckIfContains(disc))
+
+        if (student.CheckIfContains(disc))
+        {
+            d = student.GetDisciplineOfStudent(disc);
+        }
+        else
         {
             d = new Discipline(disc);
             student.addDiscipline(d);
         }
-        else
-        {
-            d = student.GetDisciplineOfStudent(disc);
-        }
 
-        System.out.print("Enter test grade: (1–12): ");
+        System.out.print("Enter test grade(1-12): ");
         int grade = Integer.parseInt(scanner.nextLine());
         d.addGrade(grade);
-        System.out.println("Grade was added");
+        System.out.println("Success!");
     }
 
     private static void exportData() throws IOException
     {
-        school.exportToJson("students.json");
-        System.out.println("Export completed!");
+        System.out.print("Enter format (json/csv/xml/txt): ");
+        String format = scanner.nextLine().toLowerCase();
+
+        switch (format)
+        {
+            case "json" -> school.exportToJson("students.json");
+            case "csv" -> school.exportToCsv("students.csv");
+            case "xml" -> school.exportToXml("students.xml");
+            case "txt" -> school.exportToTxt("students.txt");
+            default -> System.out.println("Wrong input");
+        }
     }
 
     private static void importData() throws IOException
     {
-        school.importFromJson("students.json");
-        System.out.println("Import completed!");
+        System.out.print("Enter format (json/csv/xml/txt): ");
+        String format = scanner.nextLine().toLowerCase();
+
+        switch (format)
+        {
+            case "json" -> school.importFromJson("students.json");
+            case "csv" -> school.importFromCsv("students.csv");
+            case "xml" -> school.importFromXml("students.xml");
+            case "txt" -> school.importFromTxt("students.txt");
+            default -> System.out.println("Wrong input");
+        }
     }
 }
